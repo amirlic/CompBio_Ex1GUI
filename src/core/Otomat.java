@@ -11,11 +11,15 @@ public class Otomat {
     private int globalTree;
     private int globalFire;
     private int globalEmpty;
+    private int mostOfArea;
+
+    private int areasCounter;
 
     public Otomat(int size, double probability) {
         this.size = size;
         this.matrix = new Cell[size][size];
         this.probability = probability;
+        this.mostOfArea = (int)(0.67 * size);
 
         this.globalTree = 0;
         this.globalFire = 0;
@@ -28,12 +32,17 @@ public class Otomat {
         for (int i=0; i<100; i++) {
             for (int j=0; j<100; j++) {
                 prob = rnd.nextInt(100);
+                if (j == 1 && (i != 99 && i != 0)){
+                    this.matrix[i][j] = new Cell(State.FIRE, 1, 0, 0);
+                    this.globalFire++;
+                    continue;
+                }
                 if ((prob <= this.probability*100) && (i < 99 && i > 0) && (j < 99 && j > 0)) {
-                    this.matrix[i][j] = new Cell(State.TREE, 0.1, 0, 0);
+                    this.matrix[i][j] = new Cell(State.TREE, 0.54, 0, 0);
                     this.globalTree++;
                 }
                 else {
-                    this.matrix[i][j] = new Cell(State.EMPTE, 0, 0, 0);
+                    this.matrix[i][j] = new Cell(State.EMPTE, 0.54, 0, 0);
                     this.globalEmpty++;
                 }
             }
@@ -91,6 +100,22 @@ public class Otomat {
     public void setGlobalEmpty() {
         this.globalEmpty++;
         this.globalFire--;
+    }
+
+    public void incAreasCounter() {
+        areasCounter++;
+    }
+
+    public int getAreasCounter() {
+        return areasCounter;
+    }
+
+    public void setAreasCounter(int areasCounter) {
+        this.areasCounter = areasCounter;
+    }
+
+    public int getMostOfArea() {
+        return mostOfArea;
     }
 
     public void setGlobal(State next) {

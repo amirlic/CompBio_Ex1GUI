@@ -25,6 +25,9 @@ public class Controller implements Initializable {
     @FXML
     private Text globalEmpty;
 
+    @FXML
+    private  Text areasCounter;
+
     private BoardController boardController;
     private Logic logic;
 
@@ -45,11 +48,14 @@ public class Controller implements Initializable {
         this.globalTree.setText("" + logic.getOtomat().getGlobalTree());
         this.globalFire.setText("" + logic.getOtomat().getGlobalFire());
         this.globalEmpty.setText("" + logic.getOtomat().getGlobalEmpty());
+        this.areasCounter.setText("" + logic.getOtomat().getAreasCounter());
     }
 
     @FXML
     public void makeMove() {
+        for (int i = 0;i<200;i++){
         logic.makeMove();
+        }
         this.draw();
     }
 }

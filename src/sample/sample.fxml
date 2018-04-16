@@ -27,5 +27,10 @@
             <Text text="Global Empty:"></Text>
             <Text fx:id="globalEmpty" text="blaGlobal Tree:"></Text>
         </VBox>
+
+        <VBox>
+            <Text text="Areas Counter:"></Text>
+            <Text fx:id="areasCounter" text="blaGlobal Tree:"></Text>
+        </VBox>
     </VBox>
 </HBox>

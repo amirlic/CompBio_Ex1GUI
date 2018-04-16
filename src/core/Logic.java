@@ -10,6 +10,7 @@ public class Logic {
     }
 
     public void makeMove() {
+        this.otomat.setAreasCounter(0);
         boolean isChange;
         ArrayList<Cell> nabers;
         Cell[][] matrix = this.otomat.getCopyMatrix();
@@ -37,12 +38,34 @@ public class Logic {
                             if (naber.getState() == State.FIRE) {
                                 cell.setStateByProb("G", State.FIRE, this.otomat);
                                 isChange = true;
+                                break;
                             }
                         }
                         if (!isChange) {
                             cell.setStateByProb("F", State.FIRE, this.otomat);
                         }
                     }
+                }
+            }
+        }
+        int areasTrees[][] = new int[10][10];
+        int areasEmptys[][] = new int[10][10];
+        for (int i=1; i<99; i++) {
+            for (int j=1; j<99; j++) {
+                State cellState = this.otomat.getMatrix()[i][j].getState();
+                if(cellState == State.TREE) {
+                    areasTrees[i / 10][j / 10]++;
+                } else {
+                    if (cellState == State.EMPTE){
+                        areasEmptys[i / 10][j / 10]++;
+                    }
+                }
+            }
+        }
+        for (int i = 0;i<10;i++){
+            for(int j = 0;j<10;j++){
+                if (areasTrees[i][j] > this.otomat.getMostOfArea() || areasEmptys[i][j] > this.otomat.getMostOfArea()){
+                    this.otomat.incAreasCounter();
                 }
             }
         }

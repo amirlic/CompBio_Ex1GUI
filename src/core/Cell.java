@@ -36,9 +36,9 @@ public class Cell {
     public void setStateByProb(String prob, State state, Otomat otomat) {
         Random rnd = new Random();
         int probability;
-        probability = rnd.nextInt(100);
+        probability = rnd.nextInt(99);
         double probKind = this.getProb(prob);
-        if (probability <= probKind*100) {
+        if ((double)(probability+1) <= probKind*100) {
             this.state = state;
             otomat.setGlobal(this.state);
         }
