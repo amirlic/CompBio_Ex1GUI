@@ -2,16 +2,21 @@ package core;
 
 import java.util.ArrayList;
 
+// class logic
 public class Logic {
     private Automaton automaton;
 
+    // ctor
     public Logic() {
         this.automaton = new Automaton(100);
     }
+    
+    // ctor
     public Logic(ProbsDeterminer probsDeterminer){
         this.automaton = new Automaton(100, probsDeterminer);
     }
 
+    // func make the move in the game
     public void makeMove() {
         this.automaton.setLocalIndex(0);
         boolean isChange;
@@ -74,6 +79,7 @@ public class Logic {
         }
     }
 
+    // func make huge move in the game
     public double makeHugeMove(){
         for (int i = 0;i<200;i++){
             this.makeMove();
@@ -81,10 +87,12 @@ public class Logic {
         return this.automaton.getLocalIndex();
     }
 
+    // func get Automaton
     public Automaton getAutomaton() {
         return automaton;
     }
 
+    // func print Board
     public void printBoard() {
         this.automaton.printBoard();
     }
