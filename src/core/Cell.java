@@ -2,6 +2,7 @@ package core;
 
 import java.util.Random;
 
+// class cell
 public class Cell {
     private State state;
 
@@ -11,6 +12,7 @@ public class Cell {
     //private double updatePprob;
 
 
+    // ctor
     public Cell(State state, double Gprob, double Fprob, double Pprob) {
         this.state = state;
 
@@ -20,21 +22,24 @@ public class Cell {
         //this.updatePprob = Pprob;
     }
 
+    // copy ctor
     public Cell copy() {
         return new Cell(this.getState(), this.Gprob, this.Fprob, this.Pprob);
     }
 
 
+    // func get state
     public State getState() {
         return state;
     }
 
-
+    // func set state
     public void setState(State state, Automaton automaton) {
         this.state = state;
         automaton.setGlobalEmpty();
     }
 
+    // func set State By Prob
     public void setStateByProb(String prob, State state, Automaton automaton) {
         Random rnd = new Random();
         float probability;
@@ -53,6 +58,7 @@ public class Cell {
         //}
     }
 
+    // func get prob
     public double getProb(String prob) {
         switch (prob) {
             case "G" :
