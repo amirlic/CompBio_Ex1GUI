@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.Random;
 
+// class Automation
 public class Automaton {
     private int size;
     private Cell[][] matrix;
@@ -14,6 +15,7 @@ public class Automaton {
     private ProbsDeterminer probsDeterminer;
     private int localIndex;
 
+    // ctor
     public Automaton(int size) {
         this.size = size;
         this.matrix = new Cell[size][size];
@@ -24,6 +26,7 @@ public class Automaton {
         this.globalEmpty = 0;
     }
 
+    // ctor
     public Automaton(int size, ProbsDeterminer probsDeterminer) {
         this.size = size;
         this.matrix = new Cell[size][size];
@@ -34,6 +37,7 @@ public class Automaton {
         this.probsDeterminer = probsDeterminer;
     }
 
+    // func Initial the Automaton
     public void InitialAutomaton() {
         Random rnd = new Random();
         float prob;
@@ -60,6 +64,7 @@ public class Automaton {
         }
     }
 
+    // func get Neighbors of cell
     public ArrayList<Cell> getNeighbors(int i, int j, Cell[][] matrix) {
         ArrayList neighbors = new ArrayList<Cell>();
         neighbors.add(matrix[i][j+1]);
@@ -73,10 +78,12 @@ public class Automaton {
         return neighbors;
     }
 
+    // func get the matrix
     public Cell[][] getMatrix() {
         return matrix;
     }
 
+    // func get copy of matrix
     public Cell[][] getCopyMatrix() {
         Cell[][] newMatrix = new Cell[size][size];
         for (int i=0; i<100; i++) {
@@ -87,6 +94,7 @@ public class Automaton {
         return newMatrix;
     }
 
+    // func print board
     public void printBoard() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -96,43 +104,53 @@ public class Automaton {
         }
     }
 
+    // func get size
     public int getSize() {
         return size;
     }
 
+    // func get global index of empty cell
     public int getGlobalEmpty() {
         return globalEmpty;
     }
 
+    // func get global index of fire cell
     public int getGlobalFire() {
         return globalFire;
     }
 
+    // func get global index of tree cell
     public int getGlobalTree() {
         return globalTree;
     }
 
+    // func set global index of empty cell
     public void setGlobalEmpty() {
         this.globalEmpty++;
         this.globalFire--;
     }
 
+    // func inc Areas Counter
     public void incAreasCounter() {
         localIndex++;
     }
 
+    // func get Local Index
     public int getLocalIndex() {
         return localIndex;
     }
 
+    // func set Local Index
     public void setLocalIndex(int localIndex) {
         this.localIndex = localIndex;
     }
 
+    // func get Most Of Area
     public int getMostOfArea() {
         return mostOfArea;
     }
 
+    // func set global index
     public void setGlobal(State next) {
         if (next == State.TREE) {
             this.globalEmpty--;
@@ -148,6 +166,7 @@ public class Automaton {
         }
     }
 
+    // func get Globa lIndex
     public double getGlobalIndex(){
         return (double)(this.globalTree + 1)/(this.globalEmpty + 1);
     }
