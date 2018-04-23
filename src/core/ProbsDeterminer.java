@@ -15,37 +15,44 @@ public class ProbsDeterminer {
         this.treeExistenceProb = treeExistenceProb;
     }
 
-    // getFireProb
+    // get fire prob
+    // return double
     public double getFireProb() {
         return fireProb;
     }
 
-    // getSpreadingProb
+    // get Spreading Prob
+    // return double
     public double getSpreadingProb() {
         return spreadingProb;
     }
     
-    // getTreeGrowingProb
+    // get TreeGrowing Prob
+    // return double
     public double getTreeGrowingProb() {
         return treeGrowingProb;
     }
     
-    // getTreeExistenceProb
+    // get TreeExistence Prob
+    // return double
     public double getTreeExistenceProb() {
         return treeExistenceProb;
     }
 
-    // setFireProb
+    // set Fire Prob
+    // parm double
     public void setFireProb(double fireProb) {
         this.fireProb = fireProb;
     }
 
-    //setSpreadingProb
+    //set Spreading Prob
+    // parm double
     public void setSpreadingProb(double spreadingProb) {
         this.spreadingProb = spreadingProb;
     }
     
-    // setTreeGrowingProb
+    // set TreeGrowing Prob
+    // parm double
     public void setTreeGrowingProb(double treeGrowingProb) {
         this.treeGrowingProb = treeGrowingProb;
     }
