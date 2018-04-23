@@ -10,7 +10,9 @@ import de.erichseifert.gral.plots.lines.DefaultLineRenderer2D;
 import de.erichseifert.gral.plots.lines.LineRenderer;
 import de.erichseifert.gral.ui.InteractivePanel;
 
+// class Graph Drawer
 public class GraphDrawer extends JFrame {
+    // ctor Graph Drawer
     public GraphDrawer(String part) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(600, 400);
@@ -61,6 +63,7 @@ public class GraphDrawer extends JFrame {
     }
 
 
+    // func spreading Research
     private DataTable spreadingResearch(ProbsDeterminer probsDeterminer){
         DataTable data = new DataTable(Double.class, Double.class);
         for (double x = 0.0; x <= 1.05; x+=0.05) {
@@ -73,6 +76,7 @@ public class GraphDrawer extends JFrame {
         return data;
     }
 
+    // func fire Research
     private DataTable fireResearch(ProbsDeterminer probsDeterminer){
         DataTable data = new DataTable(Double.class, Double.class);
         for (double x = 0.0; x <= 1.05; x+=0.05) {
@@ -85,6 +89,7 @@ public class GraphDrawer extends JFrame {
         return data;
     }
 
+    // func growing Research
     private DataTable growingResearch(ProbsDeterminer probsDeterminer){
         DataTable data = new DataTable(Double.class, Double.class);
         for (double x = 0.0; x <= 1.05; x+=0.05) {
@@ -97,6 +102,7 @@ public class GraphDrawer extends JFrame {
         return data;
     }
 
+    // func main
     public static void main(String[] args) {
         GraphDrawer frame = new GraphDrawer(args[0]);
         frame.setVisible(true);
