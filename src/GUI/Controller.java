@@ -12,6 +12,7 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
+// controller of the gui
 public class Controller implements Initializable {
 
     @FXML
@@ -35,6 +36,7 @@ public class Controller implements Initializable {
     private BoardController boardController;
     private Logic logic;
 
+    // initialize the game board
     public void initialize(URL location, ResourceBundle resources) {
         ProbsDeterminer probsDeterminer = new ProbsDeterminer(0.5,0.5,0.5,0.2);
         logic = new Logic(probsDeterminer);
@@ -47,6 +49,7 @@ public class Controller implements Initializable {
         this.draw();
     }
 
+    // draw the screen
     public void draw() {
         this.boardController.draw(this.logic.getAutomaton());
         this.globalTree.setText("" + logic.getAutomaton().getGlobalTree());
@@ -59,6 +62,7 @@ public class Controller implements Initializable {
         this.globalIndex.setText("" + df.format(globalIndex));
     }
 
+    // make move on the screen
     @FXML
     public void makeMove() {
         logic.makeMove();
