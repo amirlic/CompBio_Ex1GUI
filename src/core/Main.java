@@ -1,5 +1,6 @@
 package core;
 
+// Main class
 public class Main {
 
     /**
