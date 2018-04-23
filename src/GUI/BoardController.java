@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+// class Board Controller
 public class BoardController extends GridPane {
 
     public BoardController() {
@@ -16,6 +17,7 @@ public class BoardController extends GridPane {
         fxmlLoader.setController(this);
     }
 
+    // func draw screen
     public void draw(Automaton otomat) {
 
         this.getChildren().clear();
