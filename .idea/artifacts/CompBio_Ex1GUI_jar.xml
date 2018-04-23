@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CompBio_Ex1GUI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CompBio_Ex1GUI_jar</output-path>
+    <root id="archive" name="CompBio_Ex1GUI.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/GUI/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="CompBio_Ex1GUI" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/gral-core-0.11.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

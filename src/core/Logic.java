@@ -3,46 +3,49 @@ package core;
 import java.util.ArrayList;
 
 public class Logic {
-    private Otomat otomat;
+    private Automaton automaton;
 
     public Logic() {
-        this.otomat = new Otomat(100, 1);
+        this.automaton = new Automaton(100);
+    }
+    public Logic(ProbsDeterminer probsDeterminer){
+        this.automaton = new Automaton(100, probsDeterminer);
     }
 
     public void makeMove() {
-        this.otomat.setAreasCounter(0);
+        this.automaton.setLocalIndex(0);
         boolean isChange;
-        ArrayList<Cell> nabers;
-        Cell[][] matrix = this.otomat.getCopyMatrix();
+        ArrayList<Cell> neighbors;
+        Cell[][] matrix = this.automaton.getCopyMatrix();
         for (int i=1; i<99; i++) {
             for (int j=1; j<99; j++) {
                 isChange = false;
 
-                Cell cell = this.otomat.getMatrix()[i][j];
+                Cell cell = this.automaton.getMatrix()[i][j];
                 Cell copyCell = matrix[i][j];
-                nabers = this.otomat.getNabers(i,j, matrix);
+                neighbors = this.automaton.getNeighbors(i,j, matrix);
 
-                if (copyCell.getState() == State.EMPTE) {
-                    cell.setStateByProb("P", State.TREE, this.otomat);
+                if (copyCell.getState() == State.EMPTY) {
+                    cell.setStateByProb("P", State.TREE, this.automaton);
                     isChange = true;
                 }
 
                 if (copyCell.getState() == State.FIRE && !isChange) {
-                    cell.setState(State.EMPTE, this.otomat);
+                    cell.setState(State.EMPTY, this.automaton);
                     isChange = true;
                 }
 
                 if (copyCell.getState() == State.TREE) {
                     if (!isChange) {
-                        for (Cell naber : nabers) {
-                            if (naber.getState() == State.FIRE) {
-                                cell.setStateByProb("G", State.FIRE, this.otomat);
+                        for (Cell neighbor : neighbors) {
+                            if (neighbor.getState() == State.FIRE) {
+                                cell.setStateByProb("G", State.FIRE, this.automaton);
                                 isChange = true;
                                 break;
                             }
                         }
                         if (!isChange) {
-                            cell.setStateByProb("F", State.FIRE, this.otomat);
+                            cell.setStateByProb("F", State.FIRE, this.automaton);
                         }
                     }
                 }
@@ -52,11 +55,11 @@ public class Logic {
         int areasEmptys[][] = new int[10][10];
         for (int i=1; i<99; i++) {
             for (int j=1; j<99; j++) {
-                State cellState = this.otomat.getMatrix()[i][j].getState();
+                State cellState = this.automaton.getMatrix()[i][j].getState();
                 if(cellState == State.TREE) {
                     areasTrees[i / 10][j / 10]++;
                 } else {
-                    if (cellState == State.EMPTE){
+                    if (cellState == State.EMPTY){
                         areasEmptys[i / 10][j / 10]++;
                     }
                 }
@@ -64,18 +67,25 @@ public class Logic {
         }
         for (int i = 0;i<10;i++){
             for(int j = 0;j<10;j++){
-                if (areasTrees[i][j] > this.otomat.getMostOfArea() || areasEmptys[i][j] > this.otomat.getMostOfArea()){
-                    this.otomat.incAreasCounter();
+                if (areasTrees[i][j] > this.automaton.getMostOfArea() || areasEmptys[i][j] > this.automaton.getMostOfArea()){
+                    this.automaton.incAreasCounter();
                 }
             }
         }
     }
 
-    public Otomat getOtomat() {
-        return otomat;
+    public double makeHugeMove(){
+        for (int i = 0;i<200;i++){
+            this.makeMove();
+        }
+        return this.automaton.getLocalIndex();
+    }
+
+    public Automaton getAutomaton() {
+        return automaton;
     }
 
     public void printBoard() {
-        this.otomat.printBoard();
+        this.automaton.printBoard();
     }
 }

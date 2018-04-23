@@ -8,6 +8,7 @@ public class Cell {
     private double Gprob;
     private double Fprob;
     private double Pprob;
+    //private double updatePprob;
 
 
     public Cell(State state, double Gprob, double Fprob, double Pprob) {
@@ -16,6 +17,7 @@ public class Cell {
         this.Gprob = Gprob;
         this.Fprob = Fprob;
         this.Pprob = Pprob;
+        //this.updatePprob = Pprob;
     }
 
     public Cell copy() {
@@ -28,20 +30,27 @@ public class Cell {
     }
 
 
-    public void setState(State state, Otomat otomat) {
+    public void setState(State state, Automaton automaton) {
         this.state = state;
-        otomat.setGlobalEmpty();
+        automaton.setGlobalEmpty();
     }
 
-    public void setStateByProb(String prob, State state, Otomat otomat) {
+    public void setStateByProb(String prob, State state, Automaton automaton) {
         Random rnd = new Random();
-        int probability;
-        probability = rnd.nextInt(99);
+        float probability;
+        probability = rnd.nextFloat();
         double probKind = this.getProb(prob);
-        if ((double)(probability+1) <= probKind*100) {
+        if (probability <= probKind) {
+//            if(this.state == State.EMPTY){
+//                this.updatePprob = this.Pprob;
+//            }
             this.state = state;
-            otomat.setGlobal(this.state);
-        }
+            automaton.setGlobal(this.state);
+        } //else{
+//            if (this.state == State.EMPTY){
+//                this.updatePprob *= 1.1;
+//            }
+        //}
     }
 
     public double getProb(String prob) {
@@ -51,6 +60,7 @@ public class Cell {
             case "F":
                 return this.Fprob;
             case "P":
+                //return this.updatePprob;
                 return this.Pprob;
             default:
                 return 0.5;

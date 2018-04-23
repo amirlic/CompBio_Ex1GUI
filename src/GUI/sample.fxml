@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<HBox fx:controller="sample.Controller" fx:id="root"
+<HBox fx:controller="GUI.Controller" fx:id="root"
       xmlns:fx="http://javafx.com/fxml" alignment="center" spacing="10">
     <padding><Insets top="10" right="10" bottom="10" left="10"></Insets></padding>
     <VBox>
@@ -29,8 +29,14 @@
         </VBox>
 
         <VBox>
-            <Text text="Areas Counter:"></Text>
-            <Text fx:id="areasCounter" text="blaGlobal Tree:"></Text>
+            <Text text="Global index:"></Text>
+            <Text fx:id="globalIndex" text="blaGlobal Tree:"></Text>
         </VBox>
+
+        <VBox>
+            <Text text="Local index:"></Text>
+            <Text fx:id="localIndex" text="blaGlobal Tree:"></Text>
+        </VBox>
+
     </VBox>
 </HBox>

@@ -1,7 +1,7 @@
-package sample;
+package GUI;
 
 import core.Cell;
-import core.Otomat;
+import core.Automaton;
 import core.State;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.GridPane;
@@ -16,7 +16,7 @@ public class BoardController extends GridPane {
         fxmlLoader.setController(this);
     }
 
-    public void draw(Otomat otomat) {
+    public void draw(Automaton otomat) {
 
         this.getChildren().clear();
 
@@ -42,7 +42,7 @@ public class BoardController extends GridPane {
                     this.add(rect, j, i);
                 }
 
-                if (cell.getState() == State.EMPTE) {
+                if (cell.getState() == State.EMPTY) {
                     Rectangle rect = new Rectangle(cellWidth, cellHeight, Color.GRAY);
                     rect.setStroke(Color.BLACK);
                     this.add(rect, j, i);

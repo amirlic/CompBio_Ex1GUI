@@ -1,0 +1,42 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<HBox fx:controller="GUI.Controller" fx:id="root"
+      xmlns:fx="http://javafx.com/fxml" alignment="center" spacing="10">
+    <padding><Insets top="10" right="10" bottom="10" left="10"></Insets></padding>
+    <VBox>
+        <Button fx:id="makeMove" text="make move" alignment="CENTER" onAction="#makeMove"/>
+
+        <VBox>
+            <Text text="Global Tree:"></Text>
+            <Text fx:id="globalTree" text="blaGlobal Tree:"></Text>
+        </VBox>
+
+        <VBox>
+            <Text text="Global Fire:"></Text>
+            <Text fx:id="globalFire" text="blaGlobal Tree:"></Text>
+        </VBox>
+
+        <VBox>
+            <Text text="Global Empty:"></Text>
+            <Text fx:id="globalEmpty" text="blaGlobal Tree:"></Text>
+        </VBox>
+
+        <VBox>
+            <Text text="Global index:"></Text>
+            <Text fx:id="globalIndex" text="blaGlobal Tree:"></Text>
+        </VBox>
+
+        <VBox>
+            <Text text="Local index:"></Text>
+            <Text fx:id="localIndex" text="blaGlobal Tree:"></Text>
+        </VBox>
+
+    </VBox>
+</HBox>
